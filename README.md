@@ -7,7 +7,7 @@ Our research utilizes datasets that are publicly accessible. Details and access 
 - **C2DB Dataset** [3, 4, 5]: Available at [C2DB](https://cmr.fysik.dtu.dk/c2db/c2db.html).
 - **OC22 Dataset** [6]: Available at [OC22](https://github.com/Open-Catalyst-Project/ocp/blob/main/DATASET.md).
 
-For convenience, both raw and processed data from these datasets can also be downloaded from [Zenodo](https://zenodo.org/records/11071238). 
+For convenience, both raw and processed data from these datasets can also be downloaded from [Zenodo](https://zenodo.org/records/14607178). 
 
 ## Requirements
 Required Python packages include:  
@@ -33,7 +33,7 @@ For logging, we recommend using Wandb. More details are available at https://wan
 ## Step-by-Step Guide
 
 ### Data Preprocessing
-To begin working with the datasets, first download the necessary files from [Zenodo](https://zenodo.org/records/11071238) and unzip them. You will find the preprocessed data in the following directories for each dataset:
+To begin working with the datasets, first download the necessary files from [Zenodo](https://zenodo.org/records/14607178) and unzip them. You will find the preprocessed data in the following directories for each dataset:
 
 - For the XMnO dataset: cifs_xmno/train_EquiRelax, cifs_xmno/val_EquiRelax, cifs_xmno/test_EquiRelax
 - For the MP dataset: Similar directory structure as XMnO
