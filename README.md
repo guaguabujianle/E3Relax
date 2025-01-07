@@ -1,4 +1,4 @@
-# EquiRelax: An Ultrafast Equivariant Graph Neural Network for End-to-End Prediction of Relaxed Crystal Structures
+# E3Relax
 
 ## Dataset
 Our research utilizes datasets that are publicly accessible. Details and access links for each dataset are provided below:
@@ -61,17 +61,17 @@ To increase the processing speed, you can adjust the --num_workers parameter to 
 To initiate training of the EquiRelax model, execute the following commands. Make sure to substitute your_data_path with the actual path to your dataset:
 
 For the XMnO dataset:
-- `python train.py --data_root your_data_path/cifs_xmno --num_workers 4 --batch_size 32 --steps_per_epoch 800`
+- `python train.py --data_root your_data_path/cifs_xmno --num_workers 4 --batch_size 32 --steps_per_epoch 800 --save_model`
 
 For the MP dataset:
-- `python train.py --data_root your_data_path/MPF.2021.2.8 --num_workers 4  --batch_size 32 --steps_per_epoch 800`
+- `python train.py --data_root your_data_path/MPF.2021.2.8 --num_workers 4  --batch_size 32 --steps_per_epoch 800 --save_model`
 
 For the C2DB dataset:
-- `python train.py --data_root your_data_path/c2db --num_workers 4  --batch_size 32 --steps_per_epoch 100`
+- `python train.py --data_root your_data_path/c2db --num_workers 4  --batch_size 32 --steps_per_epoch 100 --save_model`
 
 For the OC22 dataset:
-- `python train_oc22.py --data_root your_data_path/oc22 --val_type val_id --num_workers 4  --batch_size 32 --steps_per_epoch 1600` for ID setting.
-- `python train_oc22.py --data_root your_data_path/oc22 --val_type val_ood --num_workers 4  --batch_size 32 --steps_per_epoch 1600` for OOD setting.
+- `python train_oc22.py --data_root your_data_path/oc22 --val_type val_id --num_workers 4  --batch_size 32 --steps_per_epoch 1600  --save_model` for ID setting.
+- `python train_oc22.py --data_root your_data_path/oc22 --val_type val_ood --num_workers 4  --batch_size 32 --steps_per_epoch 1600  --save_model` for OOD setting.
 
 ### Test the Model
 To evaluate the EquiRelax model, specifically on the XMnO dataset, run the following command, replacing your_data_path and your_model_path with the appropriate paths:
@@ -118,7 +118,7 @@ This command will process your .cif files and organize the output into two subdi
 
 #### Applying Transfer Learning
 After preprocessing your data, apply transfer learning to your custom dataset with the following command:
-- `python train.py --data_root your_data_path/custom --num_workers 4 --batch_size 32 --steps_per_epoch 100 --transfer True`
+- `python train.py --data_root your_data_path/custom --num_workers 4 --batch_size 32 --steps_per_epoch 100 --save_model --transfer`
 
 Ensure to replace your_data_path with the appropriate path to where your custom directory is located.
 
