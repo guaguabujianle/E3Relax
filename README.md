@@ -35,10 +35,10 @@ For logging, we recommend using Wandb. More details are available at https://wan
 ### Data Preprocessing
 To begin working with the datasets, first download the necessary files from [Zenodo](https://zenodo.org/records/14607178) and unzip them. You will find the preprocessed data in the following directories for each dataset:
 
-- For the XMnO dataset: cifs_xmno/train_EquiRelax, cifs_xmno/val_EquiRelax, cifs_xmno/test_EquiRelax
+- For the XMnO dataset: cifs_xmno/train_E3Relax, cifs_xmno/val_E3Relax, cifs_xmno/test_E3Relax
 - For the MP dataset: Similar directory structure as XMnO
 - For the C2DB dataset: Please note that the C2DB dataset is available upon request. Contact the corresponding author of the C2DB dataset to obtain the files, including relaxed.db and unrelaxed.db. After successfully requesting the C2DB dataset, process it using `convert_c2db.py` available in this repository.
-- For the OC22 dataset: oc22/train_EquiRelax, oc22/val_id_EquiRelax, oc22/val_ood_EquiRelax
+- For the OC22 dataset: oc22/train_E3Relax, oc22/val_id_E3Relax, oc22/val_ood_E3Relax
 
 ### Preprocessing Data from Scratch
 If you prefer to preprocess the data from scratch, use the following commands, ensuring you replace your_data_path with the appropriate path to your data:
@@ -58,7 +58,7 @@ For the C2DB dataset:
 To increase the processing speed, you can adjust the --num_workers parameter to a higher value, depending on your system's capabilities.
 
 ### Train the Model
-To initiate training of the EquiRelax model, execute the following commands. Make sure to substitute your_data_path with the actual path to your dataset:
+To initiate training of the E3Relax model, execute the following commands. Make sure to substitute your_data_path with the actual path to your dataset:
 
 For the XMnO dataset:
 - `python train.py --data_root your_data_path/cifs_xmno --num_workers 4 --batch_size 32 --steps_per_epoch 800 --save_model`
@@ -74,7 +74,7 @@ For the OC22 dataset:
 - `python train_oc22.py --data_root your_data_path/oc22 --val_type val_ood --num_workers 4  --batch_size 32 --steps_per_epoch 1600  --save_model` for OOD setting.
 
 ### Test the Model
-To evaluate the EquiRelax model, specifically on the XMnO dataset, run the following command, replacing your_data_path and your_model_path with the appropriate paths:
+To evaluate the E3Relax model, specifically on the XMnO dataset, run the following command, replacing your_data_path and your_model_path with the appropriate paths:
 - `python test.py --data_root your_data_path/cifs_xmno --model_path your_model_path/model.pt`
 
 This process can be similarly applied to the MP and C2DB datasets. If you are using WandB for tracking experiments, the saved model can typically be found at ./wandb/run-xxx/files/model.pt, where xxx represents specific run information.
@@ -83,8 +83,8 @@ To evaluate the model on the OC22 dataset, run the following command, replacing 
 - `python test_oc22.py --data_root your_data_path/oc22 --val_type val_id --model_path your_model_path/model.pt` for ID setting.
 - `python test_oc22.py --data_root your_data_path/oc22 --val_type val_ood --model_path your_model_path/model.pt` for OOD setting.
 
-### Practical Application of EquiRelax through Transfer Learning
-EquiRelax is optimally utilized via transfer learning. This approach allows you to leverage a pre-trained model and adapt it to your specific use case. Below, we outline a demonstration to guide you in transferring the trained model to your application.<br>
+### Practical Application of E3Relax through Transfer Learning
+E3Relax is optimally utilized via transfer learning. This approach allows you to leverage a pre-trained model and adapt it to your specific use case. Below, we outline a demonstration to guide you in transferring the trained model to your application.<br>
 #### Organizing Your Data
 First, ensure your data is structured as follows to facilitate processing:
 - `custom/`
@@ -111,10 +111,10 @@ Each .csv file should contain a column named atoms_id, with each row correspondi
 When defining atoms_id, ensure it is consistent with the names of your .cif files to maintain integrity and facilitate seamless processing.
 
 #### Preprocessing Your Data
-To convert your .cif files into a format suitable for EquiRelax, use the following command, replacing your_data_path with the path to your custom directory:
+To convert your .cif files into a format suitable for E3Relax, use the following command, replacing your_data_path with the path to your custom directory:
 - `python preprocess_custom.py --data_root your_data_path/custom --num_workers 1`
 
-This command will process your .cif files and organize the output into two subdirectories (train_EquiRelax and val_EquiRelax) within the custom directory.
+This command will process your .cif files and organize the output into two subdirectories (train_E3Relax and val_E3Relax) within the custom directory.
 
 #### Applying Transfer Learning
 After preprocessing your data, apply transfer learning to your custom dataset with the following command:
@@ -132,7 +132,7 @@ To predict relaxed structures and save them as .cif files:
 This script predicts the relaxed structure using record atoms_id in test.csv. Note that it is not need to provide relaxed structure for the test data. After running the prediction script, the predicted relaxed structures will be located in the ./predicted_structures directory within your project's root directory. This makes it easy to access and review the results of your model's predictions.
 
 ## Citation
-If you find the EquiRelax model beneficial for your research, please include a citation to our paper. You can reference it as follows:<br>
+If you find the E3Relax model beneficial for your research, please include a citation to our paper. You can reference it as follows:<br>
 
 ## Acknowledgements
 Some part of code in this project were adapted from [OCP](https://github.com/Open-Catalyst-Project/ocp). We gratefully acknowledge the contributions from this source. We also acknowledge Prof. Kristian Sommer Thygesen and Peder Lyngby for their generous provision of the C2DB database, complete with both initial and final structures. 
