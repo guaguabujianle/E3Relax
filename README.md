@@ -84,7 +84,7 @@ To evaluate the model on the OC22 dataset, run the following command, replacing 
 - `python test_oc22.py --data_root your_data_path/oc22 --val_type val_ood --model_path your_model_path/model.pt` for OOD setting.
 
 ### Practical Application of E3Relax through Transfer Learning
-E3Relax is optimally utilized via transfer learning. This approach allows you to leverage a pre-trained model and adapt it to your specific use case. Below, we outline a demonstration to guide you in transferring the trained model to your application.<br>
+E3Relax is optimally utilized via transfer learning. This approach allows you to leverage a pre-trained model (can be downloaded from https://zenodo.org/records/17581998) and adapt it to your specific use case. Below, we outline a demonstration to guide you in transferring the trained model to your application.<br>
 #### Organizing Your Data
 First, ensure your data is structured as follows to facilitate processing:
 - `custom/`
